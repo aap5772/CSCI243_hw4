@@ -1,21 +1,16 @@
-# Makefile for CSCI243 HW4 (tedtalk / EventTime)
-
 CC      := gcc
 CFLAGS  := -Wall -Wextra -std=c11 -g
 LDFLAGS :=
 LDLIBS  :=
 
-# Build targets
 .PHONY: all clean
 all: tedtalktest
 
-# Object files needed for the test executable
 OBJS := tedtalktest.o tedtalk.o EventTime.o
 
 tedtalktest: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
 
-# Compile rules
 tedtalktest.o: tedtalktest.c tedtalk.h EventTime.h
 	$(CC) $(CFLAGS) -c $< -o $@
 

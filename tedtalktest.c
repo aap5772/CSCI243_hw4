@@ -41,7 +41,7 @@ int main( void ) {
 
     char * mstr = tedtalk_to_string( talk1 ) ;
     printf( "Otherwise... %s\n", mstr ) ;
-
+free(mstr);
     tedtalk_play( talk1, atime ) ;
     mstr = tedtalk_to_string( talk1 ) ;
     printf( "After playing the tedtalk... \n\t%s\n", mstr ) ;
@@ -58,7 +58,7 @@ int main( void ) {
     free( sglp ) ;
 
     tedtalk_delete( talk1 ) ;
-
+free(mstr);
     speaker = malloc( sizeof( "Amy Cuddy" ) + 1 ) ;
     title = malloc( sizeof( "Your body shapes who you are" ) + 1 ) ;
     strcpy( speaker, "Amy Cuddy" ) ;
@@ -68,15 +68,16 @@ int main( void ) {
     free( title ) ;
     mstr = tedtalk_to_string( talk2 ) ;
     printf( "The talk2 is: \n\t%s\n", mstr ) ;
-    
+    free(mstr);
     talk1 = tedtalk_copy( talk2 ) ;
     mstr = tedtalk_to_string( talk1 ) ;
     printf( "The copy of talk2 tedtalk is: \n\t%s \n", mstr ) ;
     tedtalk_delete( talk2 ) ;
+    free(mstr);
     mstr = tedtalk_to_string( talk1 ) ;
     printf( "After deleting the original talk2, the copy of talk2 "
             "tedtalk is ... \n\t%s\n", mstr ) ;
-
+free(mstr);
     char * pstr ;
     talk3 = tedtalk_copy( talk1 ) ;
     if ( tedtalk_equals( talk1, talk3 ) ) {
@@ -91,19 +92,17 @@ int main( void ) {
 
     tedtalk_delete( talk3 ) ;
     tedtalk_delete( talk1 ) ;
-
+free(mstr);
     talk3 = new_TEDtalk( "How great leaders inspire action", "Simon Sinek" ) ;
     mstr = tedtalk_to_string( talk3 ) ;
     printf( "The current talk3 tedtalk is: \n\t%s\n", mstr ) ;
 
     tedtalk_play( talk3, new_event_time(4, 42, "am") ) ;
-
+free(mstr);
     mstr = tedtalk_to_string( talk3 ) ;
     printf( "The current talk3 tedtalk is: \n\t%s\n", mstr ) ;
     free( mstr ) ;
-
-    tedtalk_delete( talk1 ) ;
-    tedtalk_delete( talk3 ) ;
+tedtalk_delete( talk3 ) ;
 
     return EXIT_SUCCESS ;
 }

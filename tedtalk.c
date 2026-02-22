@@ -57,7 +57,9 @@ void tedtalk_delete(TEDtalk_t * m) {
     if (NULL != m->last_played) {
         time_delete(m->last_played);
     }
+    free(m); //fix 1: never freed the actual struct
 }
+
 
 /// get the talk's speaker
 
@@ -110,15 +112,13 @@ bool tedtalk_equals( const TEDtalk_t * m, const TEDtalk_t * o) {
 /// make a complete, deep copy of the talk
 
 TEDtalk_t * tedtalk_copy( const TEDtalk_t * m) {
-    TEDtalk_t * d = NULL;
+    TEDtalk_t * d = malloc(sizeof(*d));
     EventTime_t * tmp = NULL;
 
-    d = malloc(sizeof(TEDtalk_t));
-
-    d->speaker = malloc(sizeof(m->speaker) + 1);
+    d->speaker = malloc(strlen(m->speaker) + 1);
     strcpy(d->speaker, m->speaker);
 
-    d->title = malloc(sizeof(m->title) + 1);
+    d->title = malloc(strlen(m->title) + 1);
     strcpy(d->title, m->title);
 
     if (NULL != m->last_played) {
