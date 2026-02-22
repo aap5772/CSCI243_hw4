@@ -1,0 +1,11 @@
+commit f13deeadb17ad29d8f7a96b51a704d2fac6dc3dc
+Author: Alex <aap5772@rit.edu>
+Date:   Sat Feb 21 21:57:01 2026 -0500
+
+    freed everything
+
+commit 6831bb95b1e4a143cf15b610fd5e822ed96f5e9f
+Author: Alex Alexander Polo <aap5772@rit.edu>
+Date:   Fri Feb 20 17:33:46 2026 -0500
+
+    Initial commit
